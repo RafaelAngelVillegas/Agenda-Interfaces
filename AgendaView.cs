@@ -58,6 +58,40 @@ public static class AgendaView
         }
     }
 
+    public static List<string> PedirVariosTextos(string mensaje)
+    {
+        while (true)
+        {
+            Console.Write(mensaje);
+            List<string> valores = (Console.ReadLine() ?? "")
+                .Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)
+                .ToList();
+            if (valores.Count > 0)
+            {
+                return valores;
+            }
+
+            Console.WriteLine("Introduce al menos un valor.");
+        }
+    }
+
+    public static List<int> PedirVariosIds()
+    {
+        while (true)
+        {
+            Console.Write("Introduce los ID separados por comas: ");
+            string[] valores = (Console.ReadLine() ?? "")
+                .Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
+            if (valores.Length > 0 && valores.All(valor =>
+                int.TryParse(valor, out int id) && id > 0))
+            {
+                return valores.Select(int.Parse).Distinct().ToList();
+            }
+
+            Console.WriteLine("Introduce uno o varios ID enteros positivos separados por comas.");
+        }
+    }
+
     public static void Esperar()
     {
         Console.WriteLine("\nPulsa Enter para continuar...");

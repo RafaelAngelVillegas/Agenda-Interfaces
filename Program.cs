@@ -13,10 +13,10 @@ class Program
             switch (AgendaView.MostrarMenuPrincipal())
             {
                 case "1":
-                    PersonasView.MostrarMenu(trabajadores);
+                    PersonasView.MostrarMenu(trabajadores, empresas);
                     break;
                 case "2":
-                    EmpresasView.MostrarMenu(empresas);
+                    EmpresasView.MostrarMenu(empresas, trabajadores);
                     break;
                 case "3":
                     Console.WriteLine("Saliendo del programa...");
